@@ -1,4 +1,5 @@
 'use strict';
+const Joi = require('joi');
 
 const Pages = require('./handlers/pages');
 const Work = require('./handlers/work');
@@ -25,8 +26,22 @@ module.exports = [{
   method: 'POST',
   path: '/randomarray',
   handler: Work.randomArray,
+  options: {
+    validate: {
+      payload: {
+        n: Joi.number().min(0).integer(),
+      }
+    }
+  }
 },{
   method: 'POST',
   path: '/fibonaccirecursive',
   handler: Work.fibonacciRecursive,
+  options: {
+    validate: {
+      payload: {
+        n: Joi.number().min(0).integer(),
+      }
+    }
+  }
 }];
