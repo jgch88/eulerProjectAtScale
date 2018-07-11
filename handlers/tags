@@ -1,2 +1,5 @@
 !_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+const	/home/justin/eulerProjectAtScale/handlers/work.js	/^'use strict';$/;"	f	language:JavaScript
 exports.home	/home/justin/eulerProjectAtScale/handlers/pages.js	/^'use strict';$/;"	f	language:JavaScript
+fibonacciRecursive	/home/justin/eulerProjectAtScale/handlers/work.js	/^const fibonacciRecursive = function fibonacciRecursive(n) {$/;"	f	language:JavaScript
+randomArray	/home/justin/eulerProjectAtScale/handlers/work.js	/^const randomArray = function randomArray(n) {$/;"	f	language:JavaScript
