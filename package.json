@@ -1,0 +1,21 @@
+{
+  "name": "eulerprojectatscale",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "dependencies": {
+    "good": "^8.1.1",
+    "good-console": "^7.1.0",
+    "hapi": "^17.5.2",
+    "vision": "^5.3.3"
+  },
+  "devDependencies": {
+    "code": "^5.2.0",
+    "lab": "^15.5.0"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
