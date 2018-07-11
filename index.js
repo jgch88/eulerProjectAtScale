@@ -19,6 +19,8 @@ const init = async () => {
     },
     relativeTo: __dirname,
     path: './views',
+    layoutPath: './views/layout',
+    layout: true
 
   });
 

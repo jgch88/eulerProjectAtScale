@@ -18,6 +18,6 @@ module.exports = [{
   path: '/{name}',
   handler: (request, h) => {
 
-    return `Hello, ${encodeURIComponent(request.params.name)}!`;
+    return h.view(`${request.params.name}`);
   },
 }];
