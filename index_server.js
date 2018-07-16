@@ -1,6 +1,8 @@
 'use strict';
 
 const Hapi = require('hapi');
+const amqp = require('amqplib/callback_api');
+const generateUuid = require('./generateUuid');
 
 const server = Hapi.server({
   port: 4000,
@@ -34,6 +36,7 @@ const init = async () => {
       }
     }
   })
+
 
   await server.start();
   console.log(`Server running at: ${server.info.uri}`);

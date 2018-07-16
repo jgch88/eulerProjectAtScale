@@ -3,6 +3,7 @@ const Joi = require('joi');
 
 const Pages = require('./handlers/pages');
 const Work = require('./handlers/work');
+const ch = require('./rabbitmq_connection.js');
 
 module.exports = [{
   method: 'GET',
