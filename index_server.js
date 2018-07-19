@@ -1,19 +1,25 @@
 'use strict';
 
 const Hapi = require('hapi');
-const amqp = require('amqplib/callback_api');
-const generateUuid = require('./generateUuid');
+const Path = require('path');
+const Pages = require('./handlers/pages');
 
 const server = Hapi.server({
   port: 4000,
   host: 'localhost',
+  routes: {
+    files: {
+      relativeTo: Path.join(__dirname, 'public')
+    }
+  }
 });
 
-server.route(require('./routes'));
 
 const init = async () => {
 
   await server.register(require('vision'));
+  await server.register(require('inert'));
+  await server.register(require('nes'));
 
   server.views({
     engines: {
@@ -35,10 +41,27 @@ const init = async () => {
         }, 'stdout']
       }
     }
+  });
+
+
+  server.route(require('./routes'));
+  server.route({
+    method: 'POST',
+    path: '/socket/create',
+    handler: (request, h) => {
+      server.publish('/socket', { id: Math.random() });
+      return h.response('OK').code(200);
+    }
+  })
+  server.route({
+    method: 'GET',
+    path: '/socket',
+    handler: Pages.home,
   })
 
-
+  server.subscription('/socket');
   await server.start();
+  
   console.log(`Server running at: ${server.info.uri}`);
 };
 

@@ -1,9 +1,12 @@
 'use strict';
 const Joi = require('joi');
-
 const Pages = require('./handlers/pages');
 const Work = require('./handlers/work');
+const Assets = require('./handlers/assets');
 const ch = require('./rabbitmq_connection.js');
+const Hapi = require('hapi');
+
+const server = Hapi.server();
 
 module.exports = [{
   method: 'GET',
@@ -18,11 +21,19 @@ module.exports = [{
   }
 },{
   method: 'GET',
-  path: '/{name}',
+  path: '/1/{name}',
   handler: (request, h) => {
 
     return h.view(`${request.params.name}`);
   },
+},{
+  method: 'GET',
+  path: '/{filename}',
+  handler: {
+    file: function (request) {
+      return request.params.filename;
+    }
+  }
 },{
   method: 'POST',
   path: '/randomarray',
