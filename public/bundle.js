@@ -10387,4 +10387,14 @@ const start = async() => {
 
 start();
 
+$("#submitn").click(function() {
+  $.ajax({
+    type: "POST",
+    url: "/socket/create",
+    data: { n: $("#n").val() },
+    success: function() {},
+  })
+  //$.post("/socket/create", function(data) {})
+});
+
 },{"jquery":1,"nes":2}]},{},[3]);

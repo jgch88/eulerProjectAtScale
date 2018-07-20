@@ -46,6 +46,11 @@ amqp.connect('amqp://localhost', function(err,conn) {
         ans = fibonacciRecursive(message.n);
         console.log(ans);
       }
+
+      if (message.command === 'returnN') {
+        ans = message.n;
+        console.log(`return ${ans}`);
+      }
       // something that the 202 can deal with later...
       ch.sendToQueue(msg.properties.replyTo,
         new Buffer(ans.toString()),
